@@ -456,6 +456,17 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
+name = "shell"
+version = "1.0.1"
+description = "A better way to run shell commands in Python."
+optional = false
+python-versions = "*"
+files = [
+    {file = "shell-1.0.1-py2.py3-none-any.whl", hash = "sha256:64e3347d1dd2c8f3c3f3df5e6ebe9084d768ae20985aef6793854b9f47d4045a"},
+    {file = "shell-1.0.1.tar.gz", hash = "sha256:6fbaa88f85de228ddecef33cb1e9037f4959f6f76942b01769e4139a038f6513"},
+]
+
+[[package]]
 name = "sqlparse"
 version = "0.5.3"
 description = "A non-validating SQL parser."
@@ -501,4 +512,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "5da416cb7b6991547787709d2ff504221990e73c464743672002fdeb68e73f91"
+content-hash = "3f440d0c730043e7daf51767353e76fa683193410e77d6f4768328f4e09c248b"
