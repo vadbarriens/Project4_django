@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+
+</div>
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ mailing.message }}</h5>
+                    <p class="card-text">Дата и время первой отправки: {{ mailing.first_dispatch }}</p>
+                    <p class="card-text">Получатели:</p>
+                    <ul>
+                        {% for recipient in mailing.recipients.all %}
+                            <li>{{ recipient.email }}</li>
+                        {% empty %}
+                            <li>Нет получателей</li>
+                        {% endfor %}
+                    </ul>
+                    <p class="card-text">Владелец: {{ mailing.owner }}</p>
+                    <a href="{% url 'mailings:mailing_list' %}" class="btn btn-primary">Назад</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

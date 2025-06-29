@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project_3</title>
+    <!-- Подключите статичеcкие файлы со стилями Bootstrap -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <style>
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: scale-down;
+}
+    </style>
+</head>
+<body>
+<div class="container pt-md-5 pb-md-4">
+        {% if messages %}
+            <ul class="messages">
+                {% for msg in messages %}
+                    <li {% if msg.tags %} class="{{ msg.tags }}"{% endif %}>{{ msg }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+{% include 'includes/inc_menu.html' %}
+
+{% block content %}
+
+{% endblock %}
+
+
+<div class="container">
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    </footer>
+</div>
+<!-- Подключите статичеcкие файлы со скриптами Bootstrap -->
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

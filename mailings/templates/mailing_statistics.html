@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+
+  <p class="lead pt-md-5 pb-md-4">Сервис рассылок - здесь Вы можете настроить свои рассылки.</p>
+    <p class="lead pt-md-5 pb-md-4">Статистика рассылок.</p>
+
+</div>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for stat in mailing_stats %}
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    {% if stat.mailing.owner == user %}
+                    <p class="card-text">Сообщение: {{ stat.mailing.message }}</p>
+                    <p class="card-text">Статус: {{ stat.mailing.get_status_display }}</p>
+                    <p class="card-text">Успешные попытки: {{ stat.successful_attempts_count }}</p>
+                    <p class="card-text">Неуспешные попытки: {{ stat.failed_attempts_count }}</p>
+                    <p class="card-text">Всего отправленных сообщений: {{ stat.total_sent_messages }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p>Нет доступных рассылок.</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
