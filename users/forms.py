@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
+from django.contrib.auth.forms import PasswordResetForm, UserCreationForm
 
 from recipient.forms import StyleFormMixin
 from users.models import User
@@ -7,7 +7,7 @@ from users.models import User
 class UserRegisterForm(StyleFormMixin, UserCreationForm):
     class Meta:
         model = User
-        fields = ['email', 'password1', 'password2']
+        fields = ["email", "password1", "password2"]
 
 
 class CustomPasswordResetForm(PasswordResetForm):

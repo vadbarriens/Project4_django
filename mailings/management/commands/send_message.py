@@ -1,7 +1,8 @@
-from django.utils import timezone
-from config.settings import EMAIL_HOST_USER
-from django.core.management.base import BaseCommand
 from django.core.mail import send_mail
+from django.core.management.base import BaseCommand
+from django.utils import timezone
+
+from config.settings import EMAIL_HOST_USER
 from mailings.models import Mailing, MailingAttempt
 
 
@@ -20,18 +21,18 @@ def send_mailing(mailing):
             )
             MailingAttempt.objects.create(
                 date_attempt=timezone.now(),
-                status='SU',
-                mail_response='Сообщение отправлено',
+                status="SU",
+                mail_response="Сообщение отправлено",
                 mailing=mailing,
             )
             successful_attempts += 1
             print(
-                f'Сообщение {mailing.message.subject} успешно отправлено на почту {recipient.email}'
+                f"Сообщение {mailing.message.subject} успешно отправлено на почту {recipient.email}"
             )
         except Exception as e:
             MailingAttempt.objects.create(
                 date_attempt=timezone.now(),
-                status='FA',
+                status="FA",
                 mail_response=str(e),
                 mailing=mailing,
             )
@@ -44,10 +45,11 @@ def send_mailing(mailing):
 
     mailing.save()
 
+
 class Command(BaseCommand):
-    help = 'Send messages'
+    help = "Send messages"
 
     def handle(self, *args, **kwargs):
-        messages = Mailing.objects.filter(status__in=['CR', 'LA'])
+        messages = Mailing.objects.filter(status__in=["CR", "LA"])
         for mailing in messages:
             send_mailing(mailing)

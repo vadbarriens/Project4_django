@@ -6,16 +6,24 @@ from users.models import User
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
-    list_display = ("email", "first_name", "last_name",)
+    list_display = (
+        "email",
+        "first_name",
+        "last_name",
+    )
     search_fields = ("email",)
     ordering = ("email",)
     fieldsets = (
         (None, {"fields": ("email", "password")}),
-        ("Personal info", {
-            "fields": (
-                "first_name", "last_name",
-            )
-        }),
+        (
+            "Personal info",
+            {
+                "fields": (
+                    "first_name",
+                    "last_name",
+                )
+            },
+        ),
         (
             "Permissions",
             {
@@ -25,7 +33,7 @@ class CustomUserAdmin(UserAdmin):
                     "is_superuser",
                     "groups",
                     "user_permissions",
-                    "token"
+                    "token",
                 ),
             },
         ),

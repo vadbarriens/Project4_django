@@ -10,25 +10,41 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('mailings', '0002_initial'),
-        ('recipient', '0001_initial'),
+        ("mailings", "0002_initial"),
+        ("recipient", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='mailing',
-            name='owner',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='mailing_owner', to=settings.AUTH_USER_MODEL, verbose_name='Владелец'),
+            model_name="mailing",
+            name="owner",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="mailing_owner",
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Владелец",
+            ),
         ),
         migrations.AddField(
-            model_name='mailing',
-            name='recipients',
-            field=models.ManyToManyField(related_name='recipients', to='recipient.recipient', verbose_name='Получатели'),
+            model_name="mailing",
+            name="recipients",
+            field=models.ManyToManyField(
+                related_name="recipients",
+                to="recipient.recipient",
+                verbose_name="Получатели",
+            ),
         ),
         migrations.AddField(
-            model_name='mailingattempt',
-            name='mailing',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='mailing_attempts', to='mailings.mailing', verbose_name='Рассылка'),
+            model_name="mailingattempt",
+            name="mailing",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="mailing_attempts",
+                to="mailings.mailing",
+                verbose_name="Рассылка",
+            ),
         ),
     ]

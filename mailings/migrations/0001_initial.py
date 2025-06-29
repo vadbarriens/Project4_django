@@ -7,37 +7,99 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Mailing',
+            name="Mailing",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_dispatch', models.DateTimeField(blank=True, help_text='yyyy-mm-dd 00:00:00', null=True, verbose_name='Дата и время первой отправки')),
-                ('end_dispatch', models.DateTimeField(blank=True, help_text='yyyy-mm-dd 00:00:00', null=True, verbose_name='Дата и время окончания отправки')),
-                ('status', models.CharField(choices=[('CO', 'Завершена'), ('CR', 'Создана'), ('LA', 'Запущена')], default='CR', max_length=20, verbose_name='Статус')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "first_dispatch",
+                    models.DateTimeField(
+                        blank=True,
+                        help_text="yyyy-mm-dd 00:00:00",
+                        null=True,
+                        verbose_name="Дата и время первой отправки",
+                    ),
+                ),
+                (
+                    "end_dispatch",
+                    models.DateTimeField(
+                        blank=True,
+                        help_text="yyyy-mm-dd 00:00:00",
+                        null=True,
+                        verbose_name="Дата и время окончания отправки",
+                    ),
+                ),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("CO", "Завершена"),
+                            ("CR", "Создана"),
+                            ("LA", "Запущена"),
+                        ],
+                        default="CR",
+                        max_length=20,
+                        verbose_name="Статус",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Рассылка',
-                'verbose_name_plural': 'Рассылки',
-                'ordering': ['status', 'first_dispatch', 'message'],
-                'permissions': [('can_see_all_mailings', 'Can see all mailings'), ('can_cancel_mailing', 'Can cancel mailing')],
+                "verbose_name": "Рассылка",
+                "verbose_name_plural": "Рассылки",
+                "ordering": ["status", "first_dispatch", "message"],
+                "permissions": [
+                    ("can_see_all_mailings", "Can see all mailings"),
+                    ("can_cancel_mailing", "Can cancel mailing"),
+                ],
             },
         ),
         migrations.CreateModel(
-            name='MailingAttempt',
+            name="MailingAttempt",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date_attempt', models.DateTimeField(help_text='yyyy-mm-dd 00:00:00', verbose_name='Дата и время попытки')),
-                ('status', models.CharField(choices=[('SU', 'Успешно'), ('FA', 'Не успешно')], max_length=20, verbose_name='Статус')),
-                ('mail_response', models.TextField(verbose_name='Ответ почтового сервера')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "date_attempt",
+                    models.DateTimeField(
+                        help_text="yyyy-mm-dd 00:00:00",
+                        verbose_name="Дата и время попытки",
+                    ),
+                ),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[("SU", "Успешно"), ("FA", "Не успешно")],
+                        max_length=20,
+                        verbose_name="Статус",
+                    ),
+                ),
+                (
+                    "mail_response",
+                    models.TextField(verbose_name="Ответ почтового сервера"),
+                ),
             ],
             options={
-                'verbose_name': 'Попытка',
-                'verbose_name_plural': 'Попытки',
-                'ordering': ['status', 'date_attempt'],
+                "verbose_name": "Попытка",
+                "verbose_name_plural": "Попытки",
+                "ordering": ["status", "date_attempt"],
             },
         ),
     ]

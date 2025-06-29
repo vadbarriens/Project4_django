@@ -9,14 +9,19 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('mailings', '0001_initial'),
-        ('message', '0001_initial'),
+        ("mailings", "0001_initial"),
+        ("message", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='mailing',
-            name='message',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='message', to='message.message', verbose_name='Сообщение'),
+            model_name="mailing",
+            name="message",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="message",
+                to="message.message",
+                verbose_name="Сообщение",
+            ),
         ),
     ]

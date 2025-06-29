@@ -1,4 +1,4 @@
-from django.forms import ModelForm, BooleanField
+from django.forms import BooleanField, ModelForm
 
 from mailings.models import Mailing
 
@@ -8,12 +8,12 @@ class StyleFormMixin:
         super().__init__(*args, **kwargs)
         for field_name, fild in self.fields.items():
             if isinstance(fild, BooleanField):
-                fild.widget.attrs['class'] = 'form-check-input'
+                fild.widget.attrs["class"] = "form-check-input"
             else:
-                fild.widget.attrs['class'] = 'form-control'
+                fild.widget.attrs["class"] = "form-control"
 
 
 class MailingForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Mailing
-        fields = ['message', 'recipients']
+        fields = ["message", "recipients"]
