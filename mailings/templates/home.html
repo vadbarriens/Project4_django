@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+
+  <p class="lead pt-md-5 pb-md-4">Сервис рассылок - здесь Вы можете настроить свои рассылки.</p>
+
+</div>
+<body>
+    <h1>Статистика рассылок</h1>
+    <p>Всего рассылок: <strong>{{ total_mail }}</strong></p>
+    <p>Активные рассылки: <strong>{{ active_mail }}</strong></p>
+    <p>Уникальные получатели: <strong>{{ unique_recipients }}</strong></p>
+</body>
+</html>
+{% endblock %}
